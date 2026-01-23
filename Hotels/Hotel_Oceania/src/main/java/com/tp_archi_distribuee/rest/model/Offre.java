@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.AllArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,32 +21,32 @@ public class Offre {
     private double prix;
     @Getter
     @Setter
-    private Date dateDebutDisponibilte;
+    private LocalDate dateDebutDisponibilte;
     @Getter
     @Setter
-    private Date datefinDisponibilite;
+    private LocalDate datefinDisponibilite;
     @Getter
     @Setter
     private int nbreLits;
     @Getter
     @Setter
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel ;
     @Getter
     @Setter
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "chambre_id")
     private Chambre chambre ;
     @Getter
     @Setter
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "agence_id")
     private Agence agence;
 
 
 
-    public Offre(String aganeceId, String agency_username, String agency_password, double prix, Date dateDebutDisponibilte, Date datefinDisponibilite, int nbreLits, Hotel hotel) {
+    public Offre(String aganeceId, String agency_username, String agency_password, double prix, LocalDate dateDebutDisponibilte, LocalDate datefinDisponibilite, int nbreLits, Hotel hotel) {
         this.prix = prix;
         this.dateDebutDisponibilte = dateDebutDisponibilte;
         this.datefinDisponibilite = datefinDisponibilite;

@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor
@@ -42,9 +41,6 @@ public class Hotel {
         this.adresse = adresse;
         this.categorie= categorie;
         this.nbLits=nbLits;
-    }
-    public ArrayList<Chambre> getChambre(){
-        return (ArrayList<Chambre>) Collections.unmodifiableCollection(chambres);
     }
 
 

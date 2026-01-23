@@ -1,31 +1,34 @@
 package com.tp_archi_distribuee.rest.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class CreditCard {
+public class Adresse {
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Getter
+    private int id;
     @Getter
     @Setter
-    private String numCarte;
+    private String pays ;
     @Getter
     @Setter
-    private String dateExpiration;
+    private String ville ;
     @Getter
     @Setter
-    private String cvv;
+    private String rue;
+    @Getter
+    @Setter
+    private String gpsPosition;
 
 }

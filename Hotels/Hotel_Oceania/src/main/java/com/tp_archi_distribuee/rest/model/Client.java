@@ -1,37 +1,33 @@
 package com.tp_archi_distribuee.rest.model;
 
-
 import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Reservation {
+public class Client {
+    @Getter
+    private int id;
     @Id
     @Getter
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String email;
+    @Getter
+    @Setter
+    private String nom;
+    @Getter
+    @Setter
+    private String prenom;
+    @Getter
+    @Setter
+    private String telephone;
     @Getter
     @Setter
     @OneToOne
-    @JoinColumn(name = "offre_id")
-    private Offre offre;
-    @Getter
-    @Setter
-    private Date dateEntree;
-    @Getter
-    @Setter
-    private Date dateSortie;
-    @Getter
-    @Setter
-    @OneToOne
-    @JoinColumn(name = "client_email")
-    private Client client;
-
+    @JoinColumn(name = "creditCard_id")
+    private CreditCard creditCard;
 }

@@ -11,7 +11,7 @@ import com.tp_archi_distribuee.rest.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 
 @Service
@@ -26,7 +26,7 @@ public class HotelServiceReservation implements HotelServiceReservationInterface
     private ClientRepository clientRepo;
 
     public void effectuerReservation(int offreId, int agenceId, String login, String motDePasse, String email, String nom, CreditCard creditCard,
-                                       Date datedebutReserv, Date datefinReserv )
+                                     LocalDate datedebutReserv, LocalDate datefinReserv )
     {
         Offre offre= offreRepo.findById(offreId)
                 .orElseThrow(() -> new OffreException("Aucune offre dont cet identifiant n'est disponible"));
@@ -46,11 +46,12 @@ public class HotelServiceReservation implements HotelServiceReservationInterface
         }
 
 
-        Reservation reservation= new Reservation (offre.getHotel().getId(),
-                offre,
-                datedebutReserv,
-                datefinReserv,
-                client);
+        Reservation reservation = new Reservation();
+        reservation.setOffre(offre);
+        reservation.setDateEntree(datedebutReserv);
+        reservation.setDateSortie(datefinReserv);
+        reservation.setClient(client);
+
         reservartionRepo.save(reservation);
         System.out.println("Reservation effectuée avec succès");
     }

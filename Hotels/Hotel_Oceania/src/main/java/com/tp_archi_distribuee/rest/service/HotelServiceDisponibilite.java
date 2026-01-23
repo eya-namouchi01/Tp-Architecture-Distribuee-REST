@@ -9,14 +9,14 @@ import com.tp_archi_distribuee.rest.repository.AgenceRepository;
 import com.tp_archi_distribuee.rest.repository.HotelRepository;
 import com.tp_archi_distribuee.rest.repository.OffreRepository;
 
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
+import java.util.List;
 
 
 @Service
@@ -30,10 +30,11 @@ public class HotelServiceDisponibilite implements HotelServiceDisponibiliteInter
 
 
 
-    public ArrayList<Offre> consulterDisponibilite(int agenceId, String login, String motDePasse, Date dateDebut, Date dateFin, int nbrePersonne,
-                                                   double prixMin, double prixMax, Categorie categorie, String ville  )
+    public List<Offre> consulterDisponibilite(int agenceId, String login, String motDePasse, LocalDate dateDebut, LocalDate dateFin, int nbrePersonne,
+                                              double prixMin, double prixMax, Categorie categorie, String ville  )
     {
-        ArrayList<Offre> offresPresentes= new ArrayList<Offre>(offreRepo.findByAgenceId(agenceId));
+        List<Offre> offresPresentes =
+                new ArrayList<>(offreRepo.findByAgenceId(agenceId));
 
         Agence agence = agenceRepo.findById(agenceId)
                 .filter(a -> a.authentifier(login, motDePasse))
@@ -49,20 +50,21 @@ public class HotelServiceDisponibilite implements HotelServiceDisponibiliteInter
         }
 
         offresPresentes.removeIf(offre ->
-                !offre.getHotel().getCategorie().equals(categorie) ||
-                        !offre.getHotel().getAdresse().getVille().equalsIgnoreCase(ville)||
-                        offre.getPrix() < prixMin ||
+                offre.getPrix() < prixMin ||
                         offre.getPrix() > prixMax ||
-
-                dateDebut.before(offre.getDateDebutDisponibilte()) ||
-                        dateFin.after(offre.getDatefinDisponibilite()) ||
-                        offre.getNbreLits() < nbrePersonne
+                        offre.getNbreLits() < nbrePersonne ||
+                        offre.getDateDebutDisponibilte().isAfter(dateDebut) ||
+                        offre.getDatefinDisponibilite().isBefore(dateFin) ||
+                        !offre.getHotel().getCategorie().equals(categorie) ||
+                        !offre.getHotel().getAdresse().getVille().equalsIgnoreCase(ville)
         );
+
 
         if (offresPresentes.isEmpty()) {
             throw new OffreException("Aucune offre ne correspond aux critères demandés");
         }
-        return offresPresentes;
+
+        return new ArrayList<>(offresPresentes);
     }
 }
 
