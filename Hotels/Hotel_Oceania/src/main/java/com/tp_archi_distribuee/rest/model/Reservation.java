@@ -17,7 +17,7 @@ public class Reservation {
     private int id;
     @Getter
     @Setter
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "offre_id")
     private Offre offre;
     @Getter
@@ -28,7 +28,7 @@ public class Reservation {
     private LocalDate dateSortie;
     @Getter
     @Setter
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "client_email")
     private Client client;
 
