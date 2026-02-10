@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tp-archi-distribuee.rest</groupId>
-	<artifactId>Hotel_Oceania</artifactId>
+	<artifactId>Hotel_Belaroia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Hotel_Oceania</name>
+	<name>Hotel_Belaroia</name>
 	<description>Tp architecture distribuee REST</description>
 	<url/>
 	<licenses>

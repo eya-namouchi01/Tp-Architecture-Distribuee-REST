@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.9</version>
+        <version>3.5.9</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tp-archi-distribuee.rest</groupId>
-	<artifactId>Hotel_Oceania</artifactId>
+	<artifactId>Hotel_Radisson</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Hotel_Oceania</name>
+	<name>Hotel_Radisson</name>
 	<description>Tp architecture distribuee REST</description>
 	<url/>
 	<licenses>

@@ -1,11 +1,12 @@
 
 INSERT INTO adresse (pays,ville,rue, gps_position) VALUES
-('France', 'Paris', 'Rue de Rivoli', '48.8566,2.3522');
+('France', 'Paris', 'Place Bellecour', '45.7640,4.8357');
 
 
 INSERT INTO agence (nom, login, mot_de_passe) VALUES
 ('Airbnb', 'login1', 'pass1'),
-('Lercrec', 'login3', 'pass3');
+('Booking', 'login2', 'pass2');
+
 
 INSERT INTO credit_card (num_carte, date_expiration, cvv) VALUES
 ('1111222233334444', '2026-12', '123'),
@@ -20,13 +21,13 @@ INSERT INTO client (id, email, nom, prenom, telephone, credit_card_id) VALUES
 
 
 INSERT INTO chambre (nb_lits, prix, img) VALUES
-(2, 155.0, NULL),
-(3, 200.0, NULL),
-(4, 300.0, NULL);
+(2, 100.0, NULL),
+(3, 150.0, NULL),
+(4, 200.0, NULL);
 
 
 INSERT INTO hotel (nom, categorie, nb_lits, adresse_id) VALUES
-('Oceania', 'etoiles3', 50, 1);
+('Belaroïa', 'etoiles3', 30, 1);
 
 
 INSERT INTO offre (
@@ -38,9 +39,11 @@ INSERT INTO offre (
   chambre_id,
   agence_id
 ) VALUES
-(155.0, '2025-12-01', '2025-12-10', 2, 1, 1, 1),
-(200.0, '2025-12-05', '2025-12-15', 3, 1, 2, 1),
-(300.0, '2025-12-10', '2025-12-20', 4, 1, 3, 2);
+(100.0, '2025-12-01', '2025-12-10', 2, 1, 1, 1),
+(150.0, '2025-12-05', '2025-12-15', 3, 1, 2, 1),
+(200.0, '2025-12-10', '2025-12-20', 4, 1, 3, 2),
+(250.0, '2025-12-13', '2025-12-23', 4, 1, 2, 2);
+
 
 
 INSERT INTO reservation (
@@ -49,5 +52,5 @@ INSERT INTO reservation (
   date_sortie,
   client_email
 ) VALUES
-(2, '2025-12-06', '2025-12-08', 'client2@email.com'),
-(3, '2025-12-14', '2025-12-18', 'client3@email.com');
+(3, '2025-12-06', '2025-12-10', 'client2@email.com'),
+(4, '2025-12-10', '2025-12-14', 'client3@email.com');
